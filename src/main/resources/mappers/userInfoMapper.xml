@@ -19,4 +19,8 @@
 	<insert id="insertSawon">
 		insert into gtl_sawon(sawon_id, sawon_pass, sawon_name, sawon_position) values(#{sawon_id}, #{sawon_pass}, #{sawon_name}, #{sawon_position})
 	</insert>
+	
+	<update id="updateSawon" parameterType="com.gtl.message.domain.GtlSawonDto">
+		UPDATE gtl_sawon SET sawon_id=#{sawon_id}, sawon_pass=#{sawon_pass}, sawon_name=#{sawon_name}, sawon_position=#{sawon_position} WHERE sawon_id=#{sawon_id}
+	</update>
 </mapper>

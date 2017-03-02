@@ -7,6 +7,10 @@
 	function fnInputSawon(){
 		location.href="/sub_pages/input_sawon";
 	}
+	
+	function fnUpdateSawon(){
+		location.href="/sub_pages/update_sawon";
+	}
 </script>
 <body>
 
@@ -25,10 +29,7 @@
             	<form method="post" action="/logout">
 	            	<button type="submit" style="width:180px; height:50px; border-color:black; background-color:gray;"><strong style="font-style:bold; font-size:20px;">로그 아웃</strong></button>
             	</form><br/>
-            	<form method="post" action="/updateSawon">
-            		<input type="hidden" value="${sessionScope.loggedid}">
-	            	<button type="submit" style="width:180px; height:50px; border-color:black; background-color:gray;"><strong style="font-style:bold; font-size:20px;">정보 변경</strong></button>
-            	</form>       	
+            	<button type="button" style="width:180px; height:50px; border-color:black; background-color:gray;" onclick="javascript:fnUpdateSawon()"><strong style="font-style:bold; font-size:20px;">정보 변경</strong></button>       	
             </div>
         </div>
     </div>

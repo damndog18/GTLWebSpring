@@ -18,8 +18,8 @@ public class GtlSawonServiceImpl implements GtlSawonService {
 	}
 
 	@Override
-	public String inputDataSawon(GtlSawonDto gtlSawonDto, String sawon_id) {
+	public String inputDataSawon(GtlSawonDto gtlSawonDto, String sawon_id, String _inputFlag) {
 		System.out.println("여기는 inputSawon Service : " + gtlSawonDto + " , " + sawon_id);
-		return gtlSawonDao.inputDataSawon(gtlSawonDto, sawon_id);
+		return gtlSawonDao.inputDataSawon(gtlSawonDto, sawon_id, _inputFlag);
 	}
 }

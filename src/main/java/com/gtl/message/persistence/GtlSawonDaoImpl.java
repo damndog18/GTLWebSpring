@@ -30,19 +30,26 @@ public class GtlSawonDaoImpl implements GtlSawonDao {
 	
 	// 사원 정보 입력.
 	@Override
-	public String inputDataSawon(GtlSawonDto gtlSawonDto, String sawon_id){
+	public String inputDataSawon(GtlSawonDto gtlSawonDto, String sawon_id, String _inputFlag){
 		
-		GtlSawonDto isAlreadyExistDto = new GtlSawonDto();
-		
-		isAlreadyExistDto = getUserInfoWithId(isAlreadyExistDto, sawon_id);
-		
-		if(isAlreadyExistDto == null){
-			gtlSawonDto.setSawon_pass(passwordEncoder.encode(gtlSawonDto.getSawon_pass()));
-			sqlSession.insert(NAMESPACE + ".insertSawon", gtlSawonDto);
-			inputString = "정상 입력 완료";
+		if(_inputFlag == "input"){
+			GtlSawonDto isAlreadyExistDto = new GtlSawonDto();
+			
+			isAlreadyExistDto = getUserInfoWithId(isAlreadyExistDto, sawon_id);
+			
+			if(isAlreadyExistDto == null){
+				gtlSawonDto.setSawon_pass(passwordEncoder.encode(gtlSawonDto.getSawon_pass()));
+				sqlSession.insert(NAMESPACE + ".insertSawon", gtlSawonDto);
+				inputString = "정상 입력 완료";
+			}
+			else{
+				inputString = "입력 안 완료 : 중복 ID 입니다.";
+			}
 		}
-		else{
-			inputString = "입력 안 완료 : 중복 ID 입니다.";
+		else if(_inputFlag == "update"){
+			gtlSawonDto.setSawon_pass(passwordEncoder.encode(gtlSawonDto.getSawon_pass()));
+			sqlSession.update(NAMESPACE + ".updateSawon", gtlSawonDto);
+			inputString = "정상 입력 완료";
 		}
 		return inputString;
 	}

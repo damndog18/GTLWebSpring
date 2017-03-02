@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page pageEncoding="utf-8" session="false" contentType="text/html; utf-8" %>
+<%@ page pageEncoding="utf-8" session="true" contentType="text/html; utf-8" %>
 <!DOCTYPE html>
 <html>
 <jsp:include page="../res_include/res_head.jsp"></jsp:include>

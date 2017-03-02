@@ -4,5 +4,5 @@ import com.gtl.message.domain.GtlSawonDto;
 
 public interface GtlSawonDao {
 	public String getTime();
-	public String inputDataSawon(GtlSawonDto gtlSawonDto, String sawon_id);
+	public String inputDataSawon(GtlSawonDto gtlSawonDto, String sawon_id, String _inputFlag);
 }
