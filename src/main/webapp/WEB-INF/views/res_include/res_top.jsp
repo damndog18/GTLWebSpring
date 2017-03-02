@@ -31,7 +31,7 @@
                         <a href="/fourthPage">네번째 페이지</a>
                     </li>
                     <li>
-                    	<a href="/">${sessionScope.loggedid}</a>
+                    	<a href="/">${sessionScope.loggedmsg}</a>
                     </li>
                 </ul>
                                 

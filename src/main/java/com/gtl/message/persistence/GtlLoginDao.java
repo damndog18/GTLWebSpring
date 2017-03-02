@@ -1,6 +1,7 @@
 package com.gtl.message.persistence;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,17 @@ public class GtlLoginDao {
 	
 	HttpServletRequest request;
 	
+	HttpSession httpSession;
+	
 	// mybatis mapper 준비.
 	private static final String NAMESPACE = "com.gtl.mappers.userInfoMapper";
 	
+	// 로그인.
 	public String loginSawon(GtlSawonDto gtlSawonDto, String sawon_id, String sawon_pass) {
 		
 		String login = null;
 		
+		// 현재 request 객체 뽑아오기.
 		request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		
 		gtlSawonDto.setSawon_id(sawon_id);
@@ -41,7 +46,8 @@ public class GtlLoginDao {
 		// password 검증.
 		if(passwordEncoder.matches(sawon_pass, gtlSawonDto.getSawon_pass())){
 			// 세션에 넣기
-			WebUtils.setSessionAttribute(request, "loggedid", "반갑습니다. " + gtlSawonDto.getSawon_id() + " " + gtlSawonDto.getSawon_position() + "님");
+			WebUtils.setSessionAttribute(request, "loggedmsg", "반갑습니다. " + gtlSawonDto.getSawon_name() + " " + gtlSawonDto.getSawon_position() + "님");
+			WebUtils.setSessionAttribute(request, "loggedid", gtlSawonDto.getSawon_id());
 			login = "로그인 되었슴.";
 		}
 		else{
@@ -50,11 +56,16 @@ public class GtlLoginDao {
 		return login;
 	}
 	
+	// 로그아웃.
 	public String logoutSawon(){
 		
 		request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		
-		WebUtils.setSessionAttribute(request, "loggedid", null);
+		// 세션 객체 뽑아오기.
+		httpSession = request.getSession();
+		
+		// 세션 날리기.
+		httpSession.invalidate();
 		
 		return "로그아웃";
 	}
