@@ -13,10 +13,10 @@
 	</select>
 	
 	<select id="getUserInfoWithId" parameterType="String" resultType="com.gtl.message.domain.GtlSawonDto">
-		select * from gtl_sawon where sawon_id = #{sawon_id};
+		select * from gtl_sawon where sawon_id=#{sawon_id};
 	</select>
 	
-	<insert id="insertSawon">
+	<insert id="insertSawon" parameterType="com.gtl.message.domain.GtlSawonDto">
 		insert into gtl_sawon(sawon_id, sawon_pass, sawon_name, sawon_position) values(#{sawon_id}, #{sawon_pass}, #{sawon_name}, #{sawon_position})
 	</insert>
 	

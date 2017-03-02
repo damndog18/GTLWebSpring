@@ -28,7 +28,7 @@ public class GtlSawonDaoImpl implements GtlSawonDao {
 		return sqlSession.selectOne(NAMESPACE + ".getTime");
 	}
 	
-	// 사원 정보 입력.
+	// 사원 정보 입력, 수정.
 	@Override
 	public String inputDataSawon(GtlSawonDto gtlSawonDto, String sawon_id, String _inputFlag){
 		

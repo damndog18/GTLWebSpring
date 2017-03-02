@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <img src="http://placehold.it/150x50&text=Logo" alt="">
+                    <img src="resources/images/gtlLogo.jpg" alt="">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,7 +28,7 @@
                         <a href="/thirdPage">세번째 페이지</a>
                     </li>
                     <li>
-                        <a href="/fourthPage">네번째 페이지</a>
+                        <a href="/fourthPage">공지 사항</a>
                     </li>
                     <li>
                     	<a href="/">${sessionScope.loggedmsg}</a>
