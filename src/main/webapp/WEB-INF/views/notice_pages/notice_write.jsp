@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page pageEncoding="utf-8" session="false" contentType="text/html; utf-8" %>
+<%@ page pageEncoding="utf-8" session="true" contentType="text/html; utf-8" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +24,8 @@
     	
     <div class="row" align="center">
     	<div class="col-lg-12" align="center">
-    		<form method="post" action="">
+    		<form method="post" action="/input_notice">
+    			<input type="hidden" name="sawon_id" value="${sessionScope.loggedid}">
 	    		<strong style="font-style:bold; font-size:20px;">제 목 : </strong><input style="width:50%; border:solid navy;" id="input_notice_title" name="input_notice_title" type="text"><br/><br/>
 	    		<strong style="vertical-align:top; font-style:bold; font-size:20px;">본 문 : </strong><textarea id="input_notice_note" name="input_notice_note" style="border:solid navy;" rows="30%" cols="133%" maxlength="500" placeholder="본문 입력"></textarea><br/><br/>
 	    		<button type="submit"><strong style="font-style:bold; font-size:20px;">작성 완료</strong></button>
