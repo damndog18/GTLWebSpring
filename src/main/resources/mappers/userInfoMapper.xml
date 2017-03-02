@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.gtl.mappers.userInfoMapper">
+
+	<select id="getTime" resultType="String">
+		select now();
+	</select>
+	
+	<select id="getUserInfo" resultType="String">
+		select * from gtl_sawon;
+	</select>
+	
+	<select id="getUserInfoWithId" parameterType="String" resultType="com.gtl.message.domain.GtlSawonDto">
+		select * from gtl_sawon where sawon_id = #{sawon_id};
+	</select>
+	
+	<insert id="insertSawon">
+		insert into gtl_sawon(sawon_id, sawon_pass, sawon_name, sawon_position) values(#{sawon_id}, #{sawon_pass}, #{sawon_name}, #{sawon_position})
+	</insert>
+</mapper>
