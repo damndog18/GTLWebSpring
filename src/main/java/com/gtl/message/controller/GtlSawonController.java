@@ -42,17 +42,21 @@ public class GtlSawonController {
 	// 입력, 수정 검증 하기.
 	public ModelAndView isInputCorrect(GtlSawonDto gtlSawonDto, String sawon_id, String sawon_pass, String sawon_pass_2, String _inputFlag){
 		
+		String inputSawon = null;
+		
 		ModelAndView mv = new ModelAndView("sub_pages/input_complete");
 		
 		if(!sawon_pass.equals(sawon_pass_2)){
-			mv.addObject("inputSawon", "입력 안 완료 : password 입력 오류.");
+			inputSawon = "입력 안 완료 : password 입력 오류.";
 		}
 		else if(sawon_id == null){
-			mv.addObject("inputSawon", "입력 안 완료 : id 입력 오류(null).");
+			inputSawon = "입력 안 완료 : id 입력 오류(null).";
 		}
 		else{
-			mv.addObject("inputSawon", gtlSawonService.inputDataSawon(gtlSawonDto, sawon_id, _inputFlag));
+			inputSawon = gtlSawonService.inputDataSawon(gtlSawonDto, sawon_id, _inputFlag);
 		}
+		
+		mv.addObject("inputSawon", inputSawon);
 		
 		return mv;
 	}

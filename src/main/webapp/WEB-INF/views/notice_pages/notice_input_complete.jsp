@@ -5,7 +5,7 @@
 <jsp:include page="../res_include/res_head.jsp"></jsp:include>
 <script>
 	function fnNoticeInputComplete(){
-		location.href="/notice_read";
+		location.href="/notice_main";
 	}
 </script>
 <body>
@@ -14,7 +14,7 @@
 	
     <div align="center">
     	<br/><br/><strong style="font-size:45px; font-style:bold;">공지 사항 입력 완료</strong><br/><br/><br/><br/>
-    	<h1>${inputNotice}</h1><br/><br/>
+    	<h1>${writeNotice}</h1><br/><br/>
     	<button type="button" style="width:180px; height:50px; border-color:black; background-color:gray;" onclick="javascript:fnNoticeInputComplete()"><strong style="font-style:bold; font-size:20px;">입력 완료</strong></button>
     </div>
         

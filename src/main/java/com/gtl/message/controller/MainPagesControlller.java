@@ -23,6 +23,6 @@ public class MainPagesControlller {
 	
 	@RequestMapping("/fourthPage")
 	public String fourthPage(){
-		return "/notice_pages/notice_main";
+		return "/notice_main";
 	}
 }

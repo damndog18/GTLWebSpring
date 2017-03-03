@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                    	<a href="/firstPage">첫번째 페이지</a>
+                    	<a href="/fitstPage">첫번째 페이지</a>
                     </li>
                     <li>
                         <a href="/secondPage">두번째 페이지</a>
@@ -28,7 +28,7 @@
                         <a href="/thirdPage">세번째 페이지</a>
                     </li>
                     <li>
-                        <a href="/fourthPage">공지 사항</a>
+                        <a href="/notice_main">공지 사항</a>
                     </li>
                     <li>
                     	<a href="/">${sessionScope.loggedmsg}</a>
