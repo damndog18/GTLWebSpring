@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gtl.mappers.boardNoticeMapper">
+	
+	<select id="getBoardNotice" resultType="com.gtl.message.domain.GtlNoticeDto">
+		select * from gtl_board_notice order by board_notice_no desc
+	</select>
+	
+	<insert id="writeNotice" parameterType="com.gtl.message.domain.GtlNoticeDto">
+		insert into gtl_board_notice(sawon_id, board_notice_title, board_notice_note) values(#{sawon_id}, #{board_notice_title}, #{board_notice_note})
+	</insert>
+	
+</mapper>
