@@ -45,7 +45,7 @@
             <div class="col-lg-12" align="center">
             	<form method="post" action="/login">
 	            	<strong style="font-style:bold; font-size:25px;">ID : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><input type="text" id="sawon_Id" name="sawon_Id"><br/><br/>
-	            	<strong style="font-style:bold; font-size:25px;">PASS : </strong><input type="text" id="sawon_Pass" name="sawon_Pass"><br/><br/><br/>
+	            	<strong style="font-style:bold; font-size:25px;">PASS : </strong><input type="password" id="sawon_Pass" name="sawon_Pass"><br/><br/><br/>
 	            	<button type="submit" style="width:180px; height:50px; border-color:black; background-color:gray;"><strong style="font-style:bold; font-size:20px;">로그인</strong></button>
             	</form><br/>
             	<button type="button" style="width:180px; height:50px; border-color:black; background-color:gray;" onclick="javascript:fnInputSawon()"><strong style="font-style:bold; font-size:20px;">직원 정보 입력</strong></button>            	
