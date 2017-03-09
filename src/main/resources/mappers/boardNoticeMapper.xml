@@ -12,4 +12,8 @@
 		insert into gtl_board_notice(sawon_id, board_notice_title, board_notice_note) values(#{sawon_id}, #{board_notice_title}, #{board_notice_note})
 	</insert>
 	
+	<select id="readNotice" parameterType="int" resultType="com.gtl.message.domain.GtlNoticeDto">
+		select * from gtl_board_notice where board_notice_no=#{notice_no}
+	</select>
+	
 </mapper>

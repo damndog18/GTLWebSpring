@@ -22,5 +22,10 @@ public class GtlNoticeServiceImpl implements GtlNoticeService {
 	@Override
 	public List<GtlNoticeDto> mainNotice(GtlNoticeDto gtlNoticeDto) {
 		return gtlNoticeDao.mainNotice(gtlNoticeDto);
-	}	
+	}
+
+	@Override
+	public GtlNoticeDto readNotice(int notice_no) {
+		return gtlNoticeDao.readNotice(notice_no);
+	}
 }

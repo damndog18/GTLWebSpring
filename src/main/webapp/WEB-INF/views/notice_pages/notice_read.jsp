@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%@ page pageEncoding="utf-8" session="true" contentType="text/html; utf-8" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
@@ -17,59 +19,34 @@
     <div class="container" >
         <div >
             <div align="center">
-                <strong style="font-size:50px;"></strong><br/>
+                <strong style="font-size:50px;">공지 사항</strong><br/>
             </div>            
         </div>
     </div><br/><br/>
     	
-    <div style="display:flex; margin-right: 100px">
-    	<div style="font-size:20px;flex:10" ></div>
-    	<div style="font-size:20px;flex:1;margin-right: 30px" >	
-           	<input type="date" ></input>
-        </div>
-		<div style="font-size:20px;flex:1;" >
-	    	<select>
-	    		<option>전   체</option>
-	    		<option>김과장</option>
-	    		<option>박차장</option>
-	    		<option>양계장</option>
-	    	</select>
-	    </div>
-	    <div style="font-size:20px;flex:1;" ><button>검색</button></div>
-    </div><br/>
     <!-- 출력화면 제목 -->
     <div style="display:flex;height:40px;text-align:center;margin-bottom: 5px;">
     	<div style="flex:1"></div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">등 록 일 자</div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">등 록 자 명</div>
-    	<div style="flex:5;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">
-    		제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">조 회 수</div>
+    	<div style="flex:11;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">${readNotice.board_notice_title}</div>
     	<div style="flex:1"></div>
     </div>
-    <div style="display:flex;height:40px;margin-bottom: 5px;">
-    	<div style="flex:1"></div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#D2DEEF"></div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#D2DEEF;"></div>
-    	<div style="flex:5;font-size:25px;margin-right:5px;background:#D2DEEF;"></div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#D2DEEF;"></div>
+    <div style="display:flex;height:40px;text-align:center;margin-bottom: 5px;">
+    	<div style="flex:8"></div>
+    	<div style="flex:2;font-size:25px;margin-right:5px;background:#D2DEEF;">${fn:substring(readNotice.board_notice_input_time, 0, 11)}</div>
+    	<div style="flex:2;font-size:25px;margin-right:5px;background:#D2DEEF;">${readNotice.sawon_id}</div>
     	<div style="flex:1"></div>
     </div>
-    <div style="display:flex;height:40px;margin-bottom: 5px;">
+    <div style="display:flex;margin-bottom: 5px;">
     	<div style="flex:1"></div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#EAEFF7"></div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#EAEFF7;"></div>
-    	<div style="flex:5;font-size:25px;margin-right:5px;background:#EAEFF7;"></div>
-    	<div style="flex:2;font-size:25px;margin-right:5px;background:#EAEFF7;"></div>
+    	<div style="flex:11;font-size:25px;margin-right:5px;"><pre style="font-size:15px;">${readNotice.board_notice_note}</pre></div>
     	<div style="flex:1"></div>
     </div><br>
-    
-    
-    
-    
-    
-    
+    <div style="display:flex;height:40px;text-align:center;">
+    	<div style="flex:10"></div>
+    	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;"><strong style="font-style:bold; font-size:20px;">수 정</strong></button></div>
+    	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;"><strong style="font-style:bold; font-size:20px;">삭 제</strong></button></div>
+    	<div style="flex:1"></div>
+    </div>  
     
     <jsp:include page="../res_include/res_bottom.jsp"></jsp:include>
     

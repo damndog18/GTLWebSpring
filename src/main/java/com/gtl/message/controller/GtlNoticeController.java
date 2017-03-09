@@ -51,4 +51,17 @@ public class GtlNoticeController {
 		
 		return mv;
 	}
+	
+	// 공지 사항 읽기.
+	@RequestMapping("/read_notice")
+	public ModelAndView readNotice(@ModelAttribute GtlNoticeDto gtlNoticeDto, @RequestParam("notice_no") int notice_no){
+		
+		ModelAndView mv = new ModelAndView("notice_pages/notice_read");
+		
+		gtlNoticeDto = gtlNoticeService.readNotice(notice_no);
+		
+		mv.addObject("readNotice", gtlNoticeDto);
+		
+		return mv;
+	}
 }

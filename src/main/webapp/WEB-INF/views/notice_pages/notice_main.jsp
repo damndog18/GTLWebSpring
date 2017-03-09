@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%@ page pageEncoding="utf-8" session="true" contentType="text/html; utf-8" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
@@ -55,9 +57,9 @@
 	    <div style="display:flex;height:30px;margin-bottom: 5px;">
 	    	<div style="flex:1;"></div>
 	    	<div align="center" style="flex:1;font-size:25px;margin-right:5px;background:#D2DEEF;">${row.board_notice_no}</div>
-	    	<div style="flex:2;font-size:25px;margin-right:5px;background:#D2DEEF;">${row.board_notice_input_time}</div>
-	    	<div style="flex:1;font-size:25px;margin-right:5px;background:#D2DEEF;">${row.sawon_id}</div>
-	    	<div style="flex:7;font-size:25px;margin-right:5px;background:#D2DEEF;">${row.board_notice_title}</div>
+	    	<div align="center" style="flex:2;font-size:25px;margin-right:5px;background:#D2DEEF;">${fn:substring(row.board_notice_input_time, 0, 11)}</div>
+	    	<div align="center" style="flex:1;font-size:25px;margin-right:5px;background:#D2DEEF;">${row.sawon_id}</div>
+	    	<div style="flex:7;font-size:25px;margin-right:5px;background:#D2DEEF;"><a href="/read_notice?notice_no=${row.board_notice_no}">${row.board_notice_title}</a></div>
 	    	<div align="center" style="flex:1;font-size:25px;margin-right:5px;background:#D2DEEF;">${row.board_notice_counter}</div>
 	    	<div style="flex:1;"></div>
 	    </div>
