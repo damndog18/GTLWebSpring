@@ -28,4 +28,8 @@ public class GtlNoticeServiceImpl implements GtlNoticeService {
 	public GtlNoticeDto readNotice(int notice_no) {
 		return gtlNoticeDao.readNotice(notice_no);
 	}
+	
+	public void updateNotice(){
+		
+	}
 }

@@ -55,21 +55,23 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 		
 		GtlNoticeDto gtlNoticeDto = new GtlNoticeDto();
 		
-		
-		
-		gtlNoticeDto = sqlSession.selectOne(NAMESPACE + ".readNotice", notice_no);
-		
-		int counter = gtlNoticeDto.getBoard_notice_counter();
-		
 		// request 뽑아오기.
 		request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-		
+				
 		// 세션 객체 뽑아오기.
 		httpSession = request.getSession();
 		
-		gtlNoticeDto.setBoard_notice_counter(counter + 1);
-		
+		gtlNoticeDto = sqlSession.selectOne(NAMESPACE + ".readNotice", notice_no);
+		System.out.println(httpSession.isNew());
+		// 읽음 카운터 수정.
+		// if(httpSession.isNew()){
+			System.out.println("여기는 readNotice()의 카운터+1");
+			sqlSession.update(NAMESPACE + ".updateCounter", gtlNoticeDto);
+		// }
 		
 		return gtlNoticeDto;
 	}
+	
+	// 공지 사항 수정.
+	
 }

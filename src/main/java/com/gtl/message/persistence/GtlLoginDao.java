@@ -44,11 +44,13 @@ public class GtlLoginDao {
 		gtlSawonDto = sqlSession.selectOne(NAMESPACE + ".getUserInfoWithId", gtlSawonDto);
 		
 		// password 검증.
-		if(passwordEncoder.matches(sawon_pass, gtlSawonDto.getSawon_pass())){
-			// 세션에 넣기
-			WebUtils.setSessionAttribute(request, "loggedmsg", "반갑습니다. " + gtlSawonDto.getSawon_name() + " " + gtlSawonDto.getSawon_position() + "님");
-			WebUtils.setSessionAttribute(request, "loggedid", gtlSawonDto.getSawon_id());
-			login = "로그인 되었슴.";
+		if(gtlSawonDto != null){
+			if(passwordEncoder.matches(sawon_pass, gtlSawonDto.getSawon_pass())){
+				// 세션에 넣기
+				WebUtils.setSessionAttribute(request, "loggedmsg", "반갑습니다. " + gtlSawonDto.getSawon_name() + " " + gtlSawonDto.getSawon_position() + "님");
+				WebUtils.setSessionAttribute(request, "loggedid", gtlSawonDto.getSawon_id());
+				login = "로그인 되었슴.";
+			}
 		}
 		else{
 			login = "로그인 안 되었슴.";

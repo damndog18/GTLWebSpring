@@ -64,4 +64,17 @@ public class GtlNoticeController {
 		
 		return mv;
 	}
+	
+	// 공지 사항 수정.
+	@RequestMapping("/update_notice")
+	public String updateNotice(@ModelAttribute GtlNoticeDto gtlNoticeDto, @RequestParam("notice_no") int notice_no){
+		
+		
+		
+		return "notice_pages/notice_update";
+	}
+	
+	// 공지 사항 삭제.
+	@RequestMapping("/delete_notice")
+	public void deleteNotice(){}
 }

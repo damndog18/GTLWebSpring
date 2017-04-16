@@ -20,8 +20,8 @@
 		update gtl_board_notice set board_notice_title=#{board_notice_title}, board_notice_note=#{board_notice_note} where board_notice_no=#{notice_no}
 	</update>
 	
-	<update id="updateCounter">
-		update gtl_board_notice set board_notice_counter=#{board_notice_counter}+1 where board_notice_no=#{notice_no}
+	<update id="updateCounter" parameterType="com.gtl.message.domain.GtlNoticeDto">
+		update gtl_board_notice set board_notice_counter=#{board_notice_counter} + 1 where board_notice_no=#{board_notice_no}
 	</update>
 	
 </mapper>

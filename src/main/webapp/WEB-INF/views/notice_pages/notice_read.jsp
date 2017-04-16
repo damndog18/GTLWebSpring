@@ -8,7 +8,9 @@
 <jsp:include page="../res_include/res_head.jsp"></jsp:include>
 </head>
 <script>
-	
+	function fnUpdateNotice(notice_no){
+		location.href="/update_notice?notice_no=" + notice_no;
+	}
 </script>
 <body>
 	
@@ -43,7 +45,7 @@
     </div><br>
     <div style="display:flex;height:40px;text-align:center;">
     	<div style="flex:10"></div>
-    	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;"><strong style="font-style:bold; font-size:20px;">수 정</strong></button></div>
+    	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;" onclick="javascrypt:fnUpdateNotice(${readNotice.board_notice_no})"><strong style="font-style:bold; font-size:20px;">수 정</strong></button></div>
     	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;"><strong style="font-style:bold; font-size:20px;">삭 제</strong></button></div>
     	<div style="flex:1"></div>
     </div>  
