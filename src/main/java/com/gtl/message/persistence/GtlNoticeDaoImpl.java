@@ -74,12 +74,12 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 	
 	// 공지 사항 수정.
 	@Override
-	public GtlNoticeDto updateNotice(int notice_no){
+	public String updateNotice(GtlNoticeDto gtlNoticeDto, int notice_no){
 		
-		GtlNoticeDto gtlNoticeDto = new GtlNoticeDto();
+		gtlNoticeDto.setBoard_notice_no(notice_no);
 		
+		sqlSession.update(NAMESPACE + ".updateNotice", gtlNoticeDto);
 		
-		
-		return gtlNoticeDto;
+		return "정상 수정 되었습니다";
 	}
 }

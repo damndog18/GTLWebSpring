@@ -17,7 +17,7 @@
 	</select>
 	
 	<update id="updateNotice" parameterType="com.gtl.message.domain.GtlNoticeDto">
-		update gtl_board_notice set board_notice_title=#{board_notice_title}, board_notice_note=#{board_notice_note} where board_notice_no=#{notice_no}
+		update gtl_board_notice set board_notice_title=#{board_notice_title}, board_notice_note=#{board_notice_note} where board_notice_no=#{board_notice_no}
 	</update>
 	
 	<update id="updateCounter" parameterType="com.gtl.message.domain.GtlNoticeDto">

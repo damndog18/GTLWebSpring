@@ -25,6 +25,7 @@ public class GtlNoticeController {
 		
 		if(notice_no == 0){
 			write = "공지 사항 쓰기";
+			mv.addObject("writeUpdate", notice_no);
 		}
 		else{
 			write = "공지 사항 수정";
@@ -49,7 +50,7 @@ public class GtlNoticeController {
 	
 	// 공지 사항 쓰기.
 	@RequestMapping("/input_notice")
-	public ModelAndView inputNotice(@ModelAttribute GtlNoticeDto gtlNoticeDto, @RequestParam("sawon_id") String sawon_id, @RequestParam("board_notice_title") String notice_title, @RequestParam("board_notice_note") String notice_note){
+	public ModelAndView inputNotice(@ModelAttribute GtlNoticeDto gtlNoticeDto, @RequestParam("sawon_id") String sawon_id, @RequestParam("board_notice_title") String notice_title, @RequestParam("board_notice_note") String notice_note, @RequestParam("notice_no") int notice_no){
 		
 		String writeNotice = null;
 		
@@ -59,7 +60,12 @@ public class GtlNoticeController {
 			writeNotice = "빈 칸은 용납 못 합니다.";
 		}
 		else{
-			writeNotice = gtlNoticeService.writeNotice(gtlNoticeDto, sawon_id);
+			if(notice_no == 0){
+				writeNotice = gtlNoticeService.writeNotice(gtlNoticeDto, sawon_id);
+			}
+			else{
+				writeNotice = gtlNoticeService.updateNotice(gtlNoticeDto, notice_no);
+			}
 		}
 		
 		mv.addObject("writeNotice", writeNotice);
@@ -80,7 +86,7 @@ public class GtlNoticeController {
 		return mv;
 	}
 	
-	// 공지 사항 수정.
+	/* 공지 사항 수정.
 	@RequestMapping("/update_notice")
 	public GtlNoticeDto updateNotice(GtlNoticeDto gtlNoticeDto, @RequestParam("notice_no") int notice_no){
 		
@@ -88,6 +94,7 @@ public class GtlNoticeController {
 		
 		return gtlNoticeDto;
 	}
+	*/
 	
 	// 공지 사항 삭제.
 	@RequestMapping("/delete_notice")
