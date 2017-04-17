@@ -9,7 +9,7 @@
 </head>
 <script>
 	function fnUpdateNotice(notice_no){
-		location.href="/update_notice?notice_no=" + notice_no;
+		location.href="/notice_write?notice_no=" + notice_no;
 	}
 </script>
 <body>

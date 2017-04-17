@@ -73,5 +73,13 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 	}
 	
 	// 공지 사항 수정.
-	
+	@Override
+	public GtlNoticeDto updateNotice(int notice_no){
+		
+		GtlNoticeDto gtlNoticeDto = new GtlNoticeDto();
+		
+		
+		
+		return gtlNoticeDto;
+	}
 }

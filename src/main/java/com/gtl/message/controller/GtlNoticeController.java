@@ -17,8 +17,23 @@ public class GtlNoticeController {
 	GtlNoticeService gtlNoticeService;
 	
 	@RequestMapping("/notice_write")
-	public String writeNotice(){
-		return "/notice_pages/notice_write";
+	public ModelAndView writeNotice(int notice_no){
+		
+		String write = null;
+		
+		ModelAndView mv = new ModelAndView("notice_pages/notice_write");
+		
+		if(notice_no == 0){
+			write = "공지 사항 쓰기";
+		}
+		else{
+			write = "공지 사항 수정";
+			mv.addObject("writeUpdate", gtlNoticeService.readNotice(notice_no));
+		}
+		
+		mv.addObject("writeTitle", write);
+		
+		return mv;
 	}
 	
 	// 공지 사항 메인.
@@ -67,11 +82,11 @@ public class GtlNoticeController {
 	
 	// 공지 사항 수정.
 	@RequestMapping("/update_notice")
-	public String updateNotice(@ModelAttribute GtlNoticeDto gtlNoticeDto, @RequestParam("notice_no") int notice_no){
+	public GtlNoticeDto updateNotice(GtlNoticeDto gtlNoticeDto, @RequestParam("notice_no") int notice_no){
 		
+		gtlNoticeDto = gtlNoticeService.updateNotice(notice_no);
 		
-		
-		return "notice_pages/notice_update";
+		return gtlNoticeDto;
 	}
 	
 	// 공지 사항 삭제.

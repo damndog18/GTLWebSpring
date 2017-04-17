@@ -8,8 +8,8 @@
 <jsp:include page="../res_include/res_head.jsp"></jsp:include>
 </head>
 <script>
-	function fnWriteNotice(){
-		location.href="/notice_write";
+	function fnWriteNotice(notice_no){
+		location.href="/notice_write?notice_no=" + notice_no;
 	}
 </script>
 <body>
@@ -68,7 +68,7 @@
     <!-- 글쓰기로 이동 -->
     <div class="col-lg-12" align="right" style="display:flex;">
     	<div style="flex:1;"></div>
-    	<div style="flex:11;"><button type="button" onclick="javascript:fnWriteNotice()"><strong style="font-style:bold; font-size:20px;">글쓰기</strong></button></div>
+    	<div style="flex:11;"><button type="button" onclick="javascript:fnWriteNotice(0)"><strong style="font-style:bold; font-size:20px;">글쓰기</strong></button></div>
     	<div style="flex:1;"></div>
     </div>
     

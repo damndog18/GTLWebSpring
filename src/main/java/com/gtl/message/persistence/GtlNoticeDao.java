@@ -8,4 +8,5 @@ public interface GtlNoticeDao {
 	public String writeNotice(GtlNoticeDto gtlNoticeDto, String sawon_id);
 	public List<GtlNoticeDto> mainNotice(GtlNoticeDto gtlNoticeDto);
 	public GtlNoticeDto readNotice(int notice_no);
+	public GtlNoticeDto updateNotice(int notice_no);
 }
