@@ -63,11 +63,12 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 		
 		gtlNoticeDto = sqlSession.selectOne(NAMESPACE + ".readNotice", notice_no);
 		System.out.println(httpSession.isNew());
+		
 		// 읽음 카운터 수정.
-		// if(httpSession.isNew()){
+		if(httpSession.isNew()){
 			System.out.println("여기는 readNotice()의 카운터+1");
 			sqlSession.update(NAMESPACE + ".updateCounter", gtlNoticeDto);
-		// }
+		}
 		
 		return gtlNoticeDto;
 	}
@@ -81,5 +82,11 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 		sqlSession.update(NAMESPACE + ".updateNotice", gtlNoticeDto);
 		
 		return "정상 수정 되었습니다";
+	}
+	
+	// 공지 사항 삭제.
+	@Override
+	public void deleteNotice(int notice_no) {
+		sqlSession.delete(NAMESPACE + ".deleteNotice", notice_no);
 	}
 }

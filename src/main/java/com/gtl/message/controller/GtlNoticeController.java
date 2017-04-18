@@ -48,7 +48,7 @@ public class GtlNoticeController {
 		return mv;
 	}
 	
-	// 공지 사항 쓰기.
+	// 공지 사항 쓰기 및 수정.
 	@RequestMapping("/input_notice")
 	public ModelAndView inputNotice(@ModelAttribute GtlNoticeDto gtlNoticeDto, @RequestParam("sawon_id") String sawon_id, @RequestParam("board_notice_title") String notice_title, @RequestParam("board_notice_note") String notice_note, @RequestParam("notice_no") int notice_no){
 		
@@ -86,17 +86,12 @@ public class GtlNoticeController {
 		return mv;
 	}
 	
-	/* 공지 사항 수정.
-	@RequestMapping("/update_notice")
-	public GtlNoticeDto updateNotice(GtlNoticeDto gtlNoticeDto, @RequestParam("notice_no") int notice_no){
-		
-		gtlNoticeDto = gtlNoticeService.updateNotice(notice_no);
-		
-		return gtlNoticeDto;
-	}
-	*/
-	
 	// 공지 사항 삭제.
 	@RequestMapping("/delete_notice")
-	public void deleteNotice(){}
+	public String deleteNotice(@RequestParam("notice_no") int notice_no){
+		
+		gtlNoticeService.deleteNotice(notice_no);
+		
+		return "redirect:/notice_main";
+	}
 }

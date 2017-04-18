@@ -9,4 +9,5 @@ public interface GtlNoticeDao {
 	public List<GtlNoticeDto> mainNotice(GtlNoticeDto gtlNoticeDto);
 	public GtlNoticeDto readNotice(int notice_no);
 	public String updateNotice(GtlNoticeDto gtlNoticeDto, int notice_no);
+	public void deleteNotice(int notice_no);
 }

@@ -24,4 +24,33 @@
 		update gtl_board_notice set board_notice_counter=#{board_notice_counter} + 1 where board_notice_no=#{board_notice_no}
 	</update>
 	
+	<delete id="deleteNotice" parameterType="int">
+		delete from gtl_board_notice where board_notice_no=#{notice_no}
+	</delete>
+	
+	<!-- 검색 쿼리 샘플 -->
+	<select id="select" parameterType="hashmap" resultMap="bbsMap">
+		SELECT * FROM gtl_board_notice
+		<where>
+			<!-- SQL Injection -->
+			<!--
+			<if test="sch_type != null and sch_value != null">
+				AND ${sch_type} LIKE '%${sch_value}%'
+			</if>
+			-->
+			
+			<choose>
+				<when test="sch_type == 'subject'">
+					AND subject like CONCAT('%', #{sch_value} , '%')
+				</when>
+				<when test="sch_type == 'content'">
+					AND content like CONCAT('%', #{sch_value} , '%')
+				</when>
+				<when test="sch_type == 'user_name'">
+					AND user_name like CONCAT('%', #{sch_value} , '%')
+				</when>
+			</choose>
+		</where>
+	</select>
+	
 </mapper>

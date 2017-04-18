@@ -11,6 +11,17 @@
 	function fnUpdateNotice(notice_no){
 		location.href="/notice_write?notice_no=" + notice_no;
 	}
+	function fnDeleteNotice(notice_no){
+		
+		confirmToDelete = confirm("정말 삭제 하시겠습니까?");
+		
+		if(confirmToDelete == true){
+			location.href="/delete_notice?notice_no=" + notice_no;
+		}
+		else{
+			alert("취소하셨습니다.")
+		}
+	}
 </script>
 <body>
 	
@@ -45,8 +56,8 @@
     </div><br>
     <div style="display:flex;height:40px;text-align:center;">
     	<div style="flex:10"></div>
-    	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;" onclick="javascrypt:fnUpdateNotice(${readNotice.board_notice_no})"><strong style="font-style:bold; font-size:20px;">수 정</strong></button></div>
-    	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;"><strong style="font-style:bold; font-size:20px;">삭 제</strong></button></div>
+    	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;" onclick="javascript:fnUpdateNotice(${readNotice.board_notice_no})"><strong style="font-style:bold; font-size:20px;">수 정</strong></button></div>
+    	<div style="flex:2;"><button type="button" style="width:150px; height:40px; border-color:black; background-color:gray;" onclick="javascript:fnDeleteNotice(${readNotice.board_notice_no})"><strong style="font-style:bold; font-size:20px;">삭 제</strong></button></div>
     	<div style="flex:1"></div>
     </div>  
     
