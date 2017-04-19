@@ -29,7 +29,7 @@
 	</delete>
 	
 	<!-- 검색 쿼리 샘플 -->
-	<select id="select" parameterType="hashmap" resultMap="bbsMap">
+	<select id="searchNotice" parameterType="hashmap" resultMap="bbsMap">
 		SELECT * FROM gtl_board_notice
 		<where>
 			<!-- SQL Injection -->
