@@ -1,5 +1,8 @@
 package com.gtl.message.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -93,5 +96,16 @@ public class GtlNoticeController {
 		gtlNoticeService.deleteNotice(notice_no);
 		
 		return "redirect:/notice_main";
+	}
+	
+	@RequestMapping("/cookie_test")	
+	public void testCookie(HttpServletResponse response){
+	// Cookie 쓰기 설정.
+	Cookie writeCookie = new Cookie("TESTCOOKIE", "test");
+			
+	writeCookie.setMaxAge(24*60*60);
+	writeCookie.setPath("/");
+			
+	response.addCookie(writeCookie);
 	}
 }
