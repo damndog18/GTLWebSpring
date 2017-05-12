@@ -5,15 +5,15 @@
 <mapper namespace="com.gtl.mappers.userInfoMapper">
 
 	<select id="getTime" resultType="String">
-		select now();
+		select now()
 	</select>
 	
 	<select id="getUserInfo" resultType="String">
-		select * from gtl_sawon;
+		select * from gtl_sawon
 	</select>
 	
 	<select id="getUserInfoWithId" parameterType="String" resultType="com.gtl.message.domain.GtlSawonDto">
-		select * from gtl_sawon where sawon_id=#{sawon_id};
+		select * from gtl_sawon where sawon_id=#{sawon_id}
 	</select>
 	
 	<insert id="insertSawon" parameterType="com.gtl.message.domain.GtlSawonDto">
