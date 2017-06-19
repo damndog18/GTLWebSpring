@@ -5,22 +5,22 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<!-- mySQL DB 연결 정보 
+	<!-- mySQL DB 연결 정보 -->
 	<bean id="gtlUserContact" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://127.0.0.1:3306/gtl_report_board"></property>
 		<property name="username" value="kskim1"></property>
 		<property name="password" value="1111"></property>
 	</bean>
-	-->
 	
-	<!-- oracle DB 연결 정보 -->
-	<bean id="gtlUserContact" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<!-- oracle DB 연결 정보
+	<bean id="gtlUserContact" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
 		<property name="username" value="kskim1"/>
 		<property name="password" value="1111"/>
 	</bean>
+	-->
 	
 	<bean id="gtlSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- DB 연결 정보를 mybatis 에게 넘겨 줌. -->
