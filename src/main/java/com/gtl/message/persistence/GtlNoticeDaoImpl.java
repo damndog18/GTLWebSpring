@@ -82,19 +82,20 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 		Cookie[] getCookies = request.getCookies();
 		
 		if(getCookies != null){
+			
+			for(int i=0; i<getCookies.length; i++){
+				System.out.println("모든 쿠키 출력 : " + i + ", " + getCookies[i].getName() + ", " + getCookies[i].getValue());
+			}
+			
 			for(int i=0; i<getCookies.length; i++){
 				
 				System.out.println("쿠키 : " + getCookies[i].getName() + ", " + getCookies[i].getValue());
 				
-				System.out.println("실제 값 : " + cookieName + ", " + notice_no);
+				System.out.println("실제 값 : " + sawon_id + ", " + notice_no);
 				
-				if(getCookies[i].getName().equals(cookieName) && Integer.toString(notice_no).equals(getCookies[i].getValue())){
+				if(getCookies[i].getName().equals(sawon_id) && Integer.toString(notice_no).equals(getCookies[i].getValue())){
 					System.out.println("이미 읽은 거니까 카운터 그대로임.");
 					flag = 1;
-					break;
-				}
-				else{
-					flag = 0;
 				}
 				/*
 				if(getCookies[i].getName().contains("readnoticeno")){
@@ -123,9 +124,6 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 				*/
 			}
 		}
-		else{
-			flag = 0;
-		}
 		
 		/*
 		if(httpSession.isNew()){
@@ -141,7 +139,7 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 			sqlSession.update(NAMESPACE + ".updateCounter", gtlNoticeDto);
 			
 			// Cookie 쓰기.
-			writeCookie(notice_no);
+			writeCookie(sawon_id, notice_no);
 		}
 		
 		return gtlNoticeDto;
@@ -165,13 +163,13 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 	}
 	
 	// 쿠키 저장 하기.
-	public void writeCookie(int notice_no){		
+	public void writeCookie(String sawon_id, int notice_no){		
 		
-		Cookie writeCookie = new Cookie(cookieName, Integer.toString(notice_no));
+		Cookie writeCookie = new Cookie(sawon_id, Integer.toString(notice_no));
 				
 		writeCookie.setMaxAge(24*60*60);
 		writeCookie.setPath("/");
-				
+		
 		response.addCookie(writeCookie);
 	}
 }
