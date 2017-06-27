@@ -32,8 +32,6 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 	
 	String cookieName = null;
 	
-	int flag = 0;
-	
 	// 공지 사항 쓰기.
 	@Override
 	public String writeNotice(GtlNoticeDto gtlNoticeDto, String sawon_id) {
@@ -62,6 +60,7 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 		
 		GtlNoticeDto gtlNoticeDto = new GtlNoticeDto();
 		
+		int flag    = 0;
 		cookieName  = "readnoticeno" + Integer.toString(notice_no);
 		
 		// request, response 뽑아오기.
@@ -70,6 +69,9 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 				
 		// 세션 객체 뽑아오기.
 		httpSession = request.getSession();
+		
+		// 세션에서 로긴시 저장되었던 값 뽑아오기.
+		String sawon_id = (String)httpSession.getAttribute("loggedid");
 		
 		// DB에서 글 내용 가져오기.
 		gtlNoticeDto = sqlSession.selectOne(NAMESPACE + ".readNotice", notice_no);
@@ -89,10 +91,10 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 				if(getCookies[i].getName().equals(cookieName) && Integer.toString(notice_no).equals(getCookies[i].getValue())){
 					System.out.println("이미 읽은 거니까 카운터 그대로임.");
 					flag = 1;
-					writeCookie(notice_no);
+					break;
 				}
 				else{
-					writeCookie(notice_no);
+					flag = 0;
 				}
 				/*
 				if(getCookies[i].getName().contains("readnoticeno")){
@@ -122,8 +124,7 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 			}
 		}
 		else{
-			// Cookie 쓰기.
-			writeCookie(notice_no);
+			flag = 0;
 		}
 		
 		/*
@@ -138,6 +139,9 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 		if(flag == 0){
 			System.out.println("여기는 readNotice()의 카운터+1");
 			sqlSession.update(NAMESPACE + ".updateCounter", gtlNoticeDto);
+			
+			// Cookie 쓰기.
+			writeCookie(notice_no);
 		}
 		
 		return gtlNoticeDto;
@@ -169,15 +173,5 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 		writeCookie.setPath("/");
 				
 		response.addCookie(writeCookie);
-	}
-	
-	// 카운터 +1
-	public void updateCounter(GtlNoticeDto gtlNoticeDto){
-		
-		System.out.println("flag = " + flag);
-		
-		if(flag == 1){
-			
-		}
 	}
 }
