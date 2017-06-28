@@ -73,6 +73,16 @@ public class GtlNoticeDaoImpl implements GtlNoticeDao {
 		// 세션에서 로긴시 저장되었던 값 뽑아오기.
 		String sawon_id = (String)httpSession.getAttribute("loggedid");
 		
+		// 쿠키 준비.
+		Cookie writeCookie = new Cookie(sawon_id, Integer.toString(notice_no));
+		
+		// 쿠키 설정.
+		writeCookie.setMaxAge(24*60*60);
+		writeCookie.setPath("/");
+		
+		// 쿠키 추가.
+		response.addCookie(writeCookie);
+		
 		// DB에서 글 내용 가져오기.
 		gtlNoticeDto = sqlSession.selectOne(NAMESPACE + ".readNotice", notice_no);
 		

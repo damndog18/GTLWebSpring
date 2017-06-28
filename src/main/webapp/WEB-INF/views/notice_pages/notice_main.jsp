@@ -44,7 +44,7 @@
     <!-- 게시판 항목 -->
     <div style="display:flex;height:40px;text-align:center;margin-bottom: 5px;">
     	<div style="flex:1;"></div>
-    	<div align="center" style="flex:1;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">등 록 번 호</div>
+    	<div align="center" style="flex:1;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">번 호</div>
     	<div style="flex:2;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">등 록 일 자</div>
     	<div style="flex:1;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">등 록 자 명</div>
     	<div style="flex:7;font-size:25px;margin-right:5px;background:#5b9bd5;color:white">제 목</div>
